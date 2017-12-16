@@ -21,7 +21,7 @@ from command_manager import Manager
 
 manager = Manager()
 
-@manager.option('--test', type=int):
+@manager.option('--test', type=int)
 def sub_command1(test):
     print(test)
 
@@ -32,5 +32,12 @@ def sub_command2(file_name):
 
 if __name__ == '__main__':
     manager.run_command()
+
+```
+
+```bash
+
+python main.py sub_command1 --test 4
+python main.py sub_command2 --file test.txt
 
 ```
