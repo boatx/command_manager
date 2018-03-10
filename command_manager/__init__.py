@@ -1,4 +1,5 @@
 import argparse
+import sys
 
 
 class Manager:
@@ -12,7 +13,11 @@ class Manager:
     def run_command(self):
         """Parse arguments and run registered command"""
         args = vars(self.parse_args())
-        func = args.pop('func')
+        try:
+            func = args.pop('func')
+        except KeyError:
+            self.main_parser.print_help()
+            sys.exit(0)
         func(**args)
 
     def parse_args(self):
